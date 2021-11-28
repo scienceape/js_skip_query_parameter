@@ -1,4 +1,4 @@
-    function skipParameters(url) {
+function skipParameters(url) {
         const paragraph = url;
         // including the query operator '?'
         //const regexQuery = /^(.*?)\?/g;
@@ -7,7 +7,14 @@
         const regexQuery = /^.+?(?=\?)/g;
         let foundWebSource = paragraph.match(regexQuery);
         
-        return foundWebSource[0];
+        // if there was a query in the url return the regexed data else return the URL
+        if (foundWebSource) {
+        	return foundWebSource[0];
+        }
+        else {
+            return url;
+        }
+        
     }
     
     // returns "https://www.abc.com/segment"
